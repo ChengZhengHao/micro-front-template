@@ -13,7 +13,7 @@ const apps = [
   },
   {
     name: "StaticMicroApp",
-    entry: "//localhost:10400",
+    entry: "//localhost:10200",
     container: "#frame",
     activeRule: "/static"
   },
