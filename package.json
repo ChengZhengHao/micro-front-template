@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "examples:install": "npm-run-all --serial install:*",
-    "examples:start": "npm-run-all --parallel start:*",
+    "all:install": "npm-run-all --serial install:*",
+    "all:start": "npm-run-all --parallel start:*",
     "install:main": "cd micro-app-main && npm i",
     "start:main": "cd micro-app-main && npm run serve",
     "install:react": "cd micro-app-react && npm i",
