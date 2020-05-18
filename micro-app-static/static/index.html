@@ -4,78 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- 引入 bootstrap -->
-    <link
-      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
     <title>Jquery App</title>
   </head>
 
   <body>
-    <section
-      id="jquery-app-container"
-      style="padding: 20px; color: blue;"
-    ></section>
+    <p>static page</p>
   </body>
-  <!-- 引入 jquery -->
-  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
-    /**
-     * 请求接口数据，构建 HTML
-     */
-    async function buildHTML() {
-      const result = await fetch("http://dev-api.jt-gmall.com/mall", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // graphql 的查询风格
-        body: JSON.stringify({
-          query: `{ vegetableList (page: 1, pageSize: 20) { page, pageSize, total, items { _id, name, poster, price } } }`,
-        }),
-      }).then((res) => res.json());
-      const list = result.data.vegetableList.items;
-      const html = `<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">菜名</th>
-      <th scope="col">图片</th>
-      <th scope="col">报价</th>
-    </tr>
-  </thead>
-  <tbody>
-    ${list
-      .map(
-        (item) => `
-    <tr>
-      <td>
-        <img style="width: 40px; height: 40px; border-radius: 100%;" src="${item.poster}"></img>
-      </td>
-      <td>${item.name}</td>
-      <td>￥ ${item.price}</td>
-    </tr>
-      `
-      )
-      .join("")}
-  </tbody>
-</table>`;
-      return html;
-    }
-
     /**
      * 渲染函数
      * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
      */
-    const render = async ($) => {
-      const html = await buildHTML();
-      $("#jquery-app-container").html(html);
+    const render = async () => {
       return Promise.resolve();
     };
 
     // 独立运行时，直接挂载应用
     if (!window.__POWERED_BY_QIANKUN__) {
-      render($);
+      render();
     }
 
     ((global) => {
@@ -97,7 +43,7 @@
          */
         mount: () => {
           console.log("MicroJqueryApp mount");
-          return render($);
+          return render();
         },
         /**
          * 应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例

@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section id="cns-main-app">
+      <section className="cns-menu-wrapper">
+        <div>main-menu</div>
+      </section>
+      <section className="cns-frame-wrapper">
+        {/* 主应用渲染区，用于挂载主应用路由触发的组件 */}
+        <div>sub-menu</div>
+
+        {/* 子应用渲染区，用于挂载子应用节点 */}
+        <section id="frame"></section>
+      </section>
+    </section>
   );
 }
 
