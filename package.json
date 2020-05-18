@@ -7,7 +7,7 @@
     "all:install": "npm-run-all --serial install:*",
     "all:start": "npm-run-all --parallel start:*",
     "install:main": "cd micro-app-main && npm i",
-    "start:main": "cd micro-app-main2 && npm start",
+    "start:main": "cd micro-app-main && npm start",
     "install:react": "cd micro-app-react && npm i",
     "start:react": "cd micro-app-react && npm start",
     "install:static": "cd micro-app-static && npm i",
